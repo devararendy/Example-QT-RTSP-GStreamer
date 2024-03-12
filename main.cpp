@@ -9,12 +9,12 @@ int main(int argc, char *argv[])
     a.connect(&a, SIGNAL(lastWindowClosed()), &a, SLOT(quit ()));
 
     // prepare the pipeline
-    GstElement *pipeline = gst_parse_launch ("playbin uri=rtsp://admin:admin@192.168.1.24:1935", NULL);
+    GstElement *pipeline = gst_parse_launch ("playbin uri=rtsp://admin:admin@192.168.1.24:1935 uridecodebin0::source::latency=25", NULL);
 
     // prepare the ui
     QWidget window;
     window.setWindowTitle("MyWidget");
-    window.resize(640, 480);
+    window.resize(1280, 720);
     window.show();
 
     WId xwinid = window.winId();
